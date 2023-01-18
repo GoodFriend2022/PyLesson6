@@ -1,3 +1,4 @@
+import os
 
 def Menu():
     print('Введите порядковый номер требуемого действия: \n' + 
@@ -8,13 +9,24 @@ def Menu():
     '5 - Удалить контакт \n' +
     '6 - Изменить номер телефона у контакта \n' +
     '7 - Выход') 
-    return input('>>> ')
+    return int(input('>>> '))
 
 def WriteFile(filename):
     with open(filename, 'a') as data:
         data.writelines(input() + '\t')
 
-
 def ReadFile(filename):
+    os.system('cls')
+    person = []
     with open(filename, 'r+') as data:
-        return data.read()
+        for line in data:
+            person.append(line.split(', '))
+    return person
+
+def PrintFile(filename):
+    os.system('cls')
+    with open(filename, 'r+') as data:
+        return print(data.read() + '\n')
+
+def FindName(filename):
+    os.system('cls')
